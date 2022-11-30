@@ -13,11 +13,11 @@ char** splitWord(char*,char*,int);
 
 int main(int argc, char *argv[], char** envp){
     
-    printf("MyShell>> ");
+    printf("myshell>> ");
     int xexit;
     char word[40];
 
-    while(scanf("%[^\n]",word)==1){ 
+    while(scanf("%[^\n]",word)==1){ //exit olma durumunu kontrol edilir.
              
         int word_count=wordCount(word,' ')+1;
         char **words=splitWord(word," ",word_count);
@@ -28,7 +28,7 @@ int main(int argc, char *argv[], char** envp){
            break;        
         }
 
-        printf("MyShell>> ");
+        printf("myshell>> ");
         scanf("%[^\n]",word);
         getchar();
         
@@ -37,7 +37,7 @@ int main(int argc, char *argv[], char** envp){
 }
 
 
-char** splitWord(char* word, char* x, int wordCount){
+char** splitWord(char* word, char* x, int wordCount){ //kelime split edilir
     int count = 0;
     char **words = (char**) malloc(wordCount* sizeof(char *));
     char *stoken = strtok(word, x);
@@ -49,7 +49,7 @@ char** splitWord(char* word, char* x, int wordCount){
     return words;
 }
 
-int control(char** word_array, int wordCount, char** envp){
+int control(char** word_array, int wordCount, char** envp){ //komut kontrolleri yapılır
     	char* new_argv[5];
     	if(strcmp("exit",*(word_array)) == 0){
             
@@ -122,7 +122,7 @@ int control(char** word_array, int wordCount, char** envp){
         return 0;
 }
 
-int wordCount(char* word,char x){
+int wordCount(char* word,char x){ //kelime sayma işlemi yapılır.
     int count = 0;
     int word_length;
 
